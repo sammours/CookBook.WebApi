@@ -6,7 +6,7 @@ public interface IBookRepository // CRUD
 {
     List<Book> GetAll();
     Book GetById(int id);
-    void Insert(Book book);
-    void Update(Book book);
+    Book Insert(Book book);
+    Book Update(Book book);
     void Delete(int id);
 }

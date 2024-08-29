@@ -37,7 +37,7 @@ namespace CookBook.WebApi.Repositories
             return book;
         }
 
-        public void Insert(Book book) // SOLID: Single Responsibility
+        public Book Insert(Book book) // SOLID: Single Responsibility
         {
             if (book == null)
             {
@@ -51,17 +51,25 @@ namespace CookBook.WebApi.Repositories
 
             this.dbContext.Books.Add(book);
             this.dbContext.SaveChanges();
+
+            return book;
         }
 
-        public void Update(Book book)
+        public Book Update(Book book)
         {
             if (book == null)
             {
                 throw new ArgumentException("Book cannot be null");
             }
 
+            book.Histories.Add(new BookHistory
+            {
+                HistoryDate = DateTime.Now,
+            });
+
             this.dbContext.Books.Update(book);
             this.dbContext.SaveChanges();
+            return book;
         }
 
         public void Delete(int id)
