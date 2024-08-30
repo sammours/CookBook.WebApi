@@ -14,15 +14,14 @@ builder.Services.AddSwaggerGen();
 var configuration = builder.Configuration;
 builder.Services.AddDbContext<CookBookContext>(options =>
 {
-    /*
-     * if (env is development)
-     *  then use inMemory
-     *  UseInMemoryDatabase
-     * else
-     *  use connection string
-     *  options.UseSqlServer(configuration.GetConnectionString("Database"));
-     */
-    options.UseSqlServer(configuration.GetConnectionString("Database"));
+    if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+    {
+        options.UseInMemoryDatabase("CookBookInMemoryDb");
+    }
+    else
+    {
+        options.UseSqlServer(configuration.GetConnectionString("Database"));
+    }
     options.EnableSensitiveDataLogging();
 });
 
