@@ -1,0 +1,35 @@
+<p>user-list works!</p>
+
+<!-- 
+<div *ngFor="let item of cItems()">
+    {{item}}
+</div>
+
+
+{{cTest1()}} -->
+
+<input type="text" [(ngModel)]="this.user().age" />
+
+<br />
+Can two-way binding a signal??? {{this.user().age}}
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<button (click)="role.set(Role.admin)">macht nichts</button>
+<br />
+
+isSupervisor: {{isSupervisor()}}
+<br />
+isUser: {{isUser()}}
+<br />
+isAdmin: {{isAdmin()}}
+
+
+<br /><br />
+{{ superLongText | truncate: 70 }}
+{{ superLongText | truncate: 60 }}
+<br />
+{{ user().firstName| truncate: 60 }}

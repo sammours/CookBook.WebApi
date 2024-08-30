@@ -1,0 +1,42 @@
+<!-- <p>insert-book works!</p>
+
+<input type="text"
+    [(ngModel)]="book.title" />
+
+    <br />
+<textarea [(ngModel)]="book.description" rows="5"></textarea>
+
+<div>
+    Title is: {{book.title}}
+</div>
+
+<div>
+    Description is: {{book.description}}
+</div>
+
+<div>
+    Is Valid: {{book.isTitleValid()}}
+</div> -->
+
+<!-- <div>
+Book1: {{ book1.description }}
+</div>
+<div>
+Book2: {{ book2.description }}
+</div>
+
+<div>
+    Is title valid: {{bookValidation.isValid()}}
+</div> -->
+
+<input type="text"
+    [(ngModel)]="book.title" />
+    <br />
+<textarea [(ngModel)]="book.description" rows="5"></textarea>
+<br />
+<button [disabled]="!bookValidation.isValid()" >Save</button>
+
+<br />
+<div *ngFor="let error of bookValidation.errors">
+    {{ error }}
+</div>

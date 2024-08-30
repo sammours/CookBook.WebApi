@@ -1,0 +1,86 @@
+<div [formGroup]="formGroup" style="display: flex; flex-direction: column; gap: 10px;">
+    <div>
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" formControlName="firstName" />
+        <span *ngIf="formGroup.controls.firstName.errors?.['required']">
+            First Name is required
+        </span>
+    </div>
+    
+    <div>
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" />
+        <span *ngIf="formGroup.controls.lastName.errors?.['required']">
+            Last Name is required
+        </span>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" formControlName="email" />
+        <span *ngIf="formGroup.controls.email.errors?.['required']">
+            Email is required
+        </span>
+    </div>
+
+    <div>
+        <label for="age">Age</label>
+        <input type="number" id="age" formControlName="age" />
+        <span *ngIf="formGroup.controls.age.errors?.['required']">
+            Age is required
+        </span>
+        <span *ngIf="formGroup.controls.age.errors?.['min']">
+            Age must be > 18
+        </span>
+    </div>
+
+    <div>
+        <label for="postalCode">Postal code</label>
+        <input type="text" id="postalCode" formControlName="postalCode" />
+        <span *ngIf="formGroup.controls.postalCode.errors?.['required']">
+            Postal code is required
+        </span>
+        <span *ngIf="formGroup.controls.postalCode.errors?.['postalCode']">
+            Postal code is not valid.
+        </span>
+    </div>
+
+    <div>
+        <button [disabled]="formGroup.invalid" (click)="onSaveClicked()">Save</button>
+    </div>
+</div>
+
+<div>
+    Group invalid: {{ formGroup.invalid }}
+</div>
+
+<h2>Compare Reactive Form with Two Way Binding </h2>
+<div>
+    Two way binding
+    <br />
+    <input type="text" [(ngModel)]="user.firstName" />
+</div>
+
+<div>
+    Reactive form
+    <br />
+    <input type="text" [formControl]="firstNameControl" />
+</div>
+
+<div>
+    Property value: {{ user.firstName }}
+</div>
+
+<div>
+    Form control value: {{ firstNameControl.value }}
+</div>
+
+<br />
+<br />
+
+<br />
+<br />
+<br />
+<br />
+
+<br />

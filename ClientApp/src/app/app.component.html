@@ -1,0 +1,24 @@
+<header style="background-color: gray;display: flex; justify-content: space-between;">
+    <div>
+        Hier ist logo
+    </div>
+
+    <div>
+        <nav>
+            <ul style="list-style: none; display: inline-flex; gap: 10px">
+                <li><a [routerLink]="['/users']" [routerLinkActive]="'is-active'">Users</a></li>
+                <li><a [routerLink]="['/books']" [routerLinkActive]="'is-active'">Books</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<router-outlet />
+
+<footer style="background-color: gray;">
+    <div style="width: 100%; height: 50px;">
+        Hier ist Footer
+    </div>
+</footer>
+
+<!-- <cb-insert-user /> -->

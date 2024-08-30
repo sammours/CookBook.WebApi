@@ -1,0 +1,55 @@
+Absolut Url
+https://cook-book.com
+
+
+https://cook-book.com/assets/logo1.png
+https://cook-book.com/shared/shared_logo.png
+
+
+Assets
+Output: 'assets\'
+C:\\folder\..\logo1.png
+C:\\folder\..\logo2.png
+C:\\folder\..\logo3.png
+C:\\folder\..\logo4.png
+
+Shared:
+Output shared
+
+
+
+
+///////////////////-----------------------------
+
+
+Module
+    user.module.ts
+        -> user-list.component.ts
+        -> user-edit.component.ts
+
+    user-list.component.ts => standalone
+    user-edit.component.ts => standalone
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

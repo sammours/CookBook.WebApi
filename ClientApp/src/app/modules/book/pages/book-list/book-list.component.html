@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th></th>
+    </tr>
+
+    <tr *ngFor="let book of books">
+        <td> {{ book.id }} </td>
+        <td>{{ book.title }}</td>
+        <td> 
+            <a [routerLink]="['/books', book.id]">Edit as Link</a>
+            <button (click)="onEditClicked(book.id)">Edit as button</button>
+        </td>
+    </tr>
+</table>
