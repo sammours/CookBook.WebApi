@@ -1,3 +1,48 @@
+<ng-container *ngIf="isLoading; else notEmpty">
+    Loading...
+</ng-container>
+<ng-template #notEmpty>
+    <h1> Books Sync 1</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th></th>
+        </tr>
+    
+        <tr *ngFor="let book of books1">
+            <td> {{ book.id }} </td>
+            <td>{{ book.title }}</td>
+            <td> 
+                <a [routerLink]="['/books', book.id]">Edit as Link</a>
+                <button (click)="onEditClicked(book.id)">Edit as button</button>
+            </td>
+        </tr>
+    </table>
+</ng-template>
+
+<h1> Books Async 1</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th></th>
+        </tr>
+    
+        <ng-container *ngIf="(books1$ | async) as result">
+            <tr *ngFor="let book of result">
+                <td> {{ book.id }} </td>
+                <td>{{ book.title }}</td>
+                <td> 
+                    <a [routerLink]="['/books', book.id]">Edit as Link</a>
+                    <button (click)="onEditClicked(book.id)">Edit as button</button>
+                </td>
+            </tr>
+        </ng-container>
+    </table>
+
+
+<!-- <h1> Books 2</h1>
 <table>
     <tr>
         <th>Id</th>
@@ -5,7 +50,7 @@
         <th></th>
     </tr>
 
-    <tr *ngFor="let book of books">
+    <tr *ngFor="let book of books2">
         <td> {{ book.id }} </td>
         <td>{{ book.title }}</td>
         <td> 
@@ -13,4 +58,10 @@
             <button (click)="onEditClicked(book.id)">Edit as button</button>
         </td>
     </tr>
-</table>
+</table> -->
+
+<!-- <button (click)="onCloseClicked()">close connection</button>
+
+<div *ngFor="let x of this.arr">
+    {{x }}
+</div> -->

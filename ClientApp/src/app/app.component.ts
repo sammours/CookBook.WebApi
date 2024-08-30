@@ -3,7 +3,6 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { ChildComponentComponent } from './components/child-component/child-component.component';
 import { InsertBookComponent } from './components/insert-book/insert-book.component';
 import { InsertUserComponent } from './components/insert-user/insert-user.component';
-import { BookValidation } from './validations/book.validation';
 
 @Component({
   selector: 'cb-root',
@@ -18,7 +17,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   title = 'cook-book';
   text = 'Hello welt';
 
-  constructor(private ref: ChangeDetectorRef, private validator: BookValidation) {
+  constructor(private ref: ChangeDetectorRef) {
     console.log('Constructor');
   }
   ngOnDestroy(): void {

@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Book } from "../models/book.model";
-Injectable({
-    providedIn: 'root'
-})
+
 export class BookValidation {
     public errors: string[] = [];
     private book: Book;

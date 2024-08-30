@@ -25,6 +25,44 @@ builder.Services.AddDbContext<CookBookContext>(options =>
     options.EnableSensitiveDataLogging();
 });
 
+var cookBookPolicy = "CookBookPolicy";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(cookBookPolicy,
+        builder =>
+        {
+            builder
+                .AllowAnyOrigin() // Server Urls
+                .AllowAnyHeader() // Request Headers: access token, referer url, ...
+                .AllowAnyMethod(); // GET, POST, PUT, DELETE, OPTIONS
+        });
+});
+
+var dbContext = builder.Services.BuildServiceProvider().GetRequiredService<CookBookContext>();
+dbContext.Books.Add(new Book
+{
+    Id = 1,
+    Title = "Book1",
+    Author = "Jens",
+    Description = "Book desc",
+    IsAvailable = true,
+    ISBN = "S-123123123",
+    PublishDate = DateTime.Now,
+});
+
+dbContext.Books.Add(new Book
+{
+    Id = 2,
+    Title = "Book2",
+    Author = "Jens",
+    Description = "Book desc",
+    IsAvailable = true,
+    ISBN = "S-123123124",
+    PublishDate = DateTime.Now.AddMonths(-5),
+});
+
+dbContext.SaveChanges();
+
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
@@ -37,6 +75,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(cookBookPolicy);
 
 app.UseAuthorization();
 
